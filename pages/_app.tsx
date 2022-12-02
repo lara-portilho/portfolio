@@ -1,6 +1,14 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
+import { IconContext } from 'react-icons';
+import { GlobalStyle } from '../src/helpers/GlobalStyle';
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <IconContext.Provider value={{}}>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </IconContext.Provider>
+    </>
+  );
 }

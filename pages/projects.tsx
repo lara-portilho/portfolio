@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import { Sidebar } from '../src/components/Sidebar';
 import { PageLayout } from '../src/components/PageLayout';
-import { Home } from '../src/routes/Home';
+import { Projects } from '../src/routes/Projects';
 
-export default function HomePage() {
+export default function ProjectsPage() {
   return (
     <>
       <Head>
@@ -12,7 +12,7 @@ export default function HomePage() {
 
       <Sidebar />
       <PageLayout>
-        <Home />
+        <Projects />
       </PageLayout>
     </>
   );
