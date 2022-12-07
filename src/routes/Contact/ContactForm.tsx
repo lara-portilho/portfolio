@@ -1,8 +1,10 @@
+import axios from 'axios';
 import { BaseSyntheticEvent } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
+import { api } from '../../helpers/api';
 
-type ContactFormData = {
+export type ContactFormData = {
   name: string;
   email: string;
   about: string;
@@ -23,8 +25,16 @@ export const ContactForm = () => {
     data: ContactFormData,
     e: BaseSyntheticEvent | undefined,
   ) => {
-    console.log(data);
-    e?.target.reset();
+    try {
+      api({
+        method: 'POST',
+        url: '/api/email',
+        data: JSON.stringify(data),
+      });
+      e?.target.reset();
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <FormComponent onSubmit={handleSubmit(onSubmit)}>
